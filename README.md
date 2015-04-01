@@ -69,25 +69,21 @@ EOF
 ```
 
 
-# Where to Place Configuration Files on Your Server
-
-Tmos-config tries to locate the configuration file first from the current working directory, then from its parent directory and so on up until the disk root.  Ideally, you should place the configuration file just above the web root so that the file cannot be read from web accidentially and you don't need to re-create the file if you decide to wipe out the program directory before installing a new version.
-
 
 # Reading configuration file
 
 ## Construct Config object
 In order to use options from a configuration file, first construct a Config object with the getInstance function
-
 ```
 $conf = Config::getInstance ('server.conf')
 ```
+where ''server.conf'' is the name of the configuration file.  
 
-where ''server.conf'' is the name of the configuration file.  Tmos-config tries to locate the configuration file starting from the current directory up so you don't need to specify a path if you place the configuration file on some parent directory.
+Tmos-config tries to locate the configuration file first from the directory containing config.php file, then from its parent directory and so on up until the disk root.  Ideally, you should place the configuration file just above the web root so that the file cannot be read from web accidentially and you don't need to re-create the file if you decide to wipe out the program directory before installing a new version.
 
 
 ## Access Values
-Once you have constructed a Config object, you can access options
+With a Config object, you can access options in three ways:
 
 1. with getOption function as ``$value = $conf->getOption ('myuser', 'defaultuser');``
 2. using object notation as ``$value = $conf->myuser;``
