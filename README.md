@@ -4,7 +4,7 @@ Library for handling configuration files in PHP.
 # Rationale
 Before PHP code is run on servers, the code often has to be configured just for that server's enviroment.  For example, production servers may have distinct user names and passwords for accessing databases while development servers may have dummy email addresses and urls to prevent development code from interacting with the world or to facilitate debugging.
 
-Tmos-config a library that allows you to store server specific data in a configuration file that is kept outside of version control.  Having configuration data outside source code allows you to update or re-install your program on a number of pre-configured servers without modifying code.
+Tmos-config is a library that allows you to store server specific data in a configuration file that is kept outside of version control.  Having configuration data outside source code allows you to update or re-install your program on a number of pre-configured servers without modifying code.
 
 
 # Anatomy of a Configuration File
@@ -20,7 +20,7 @@ production = true
 
 
 ## Sections
-If the same configuration file is used by a number of programs or one program has great many options, then the file may be further divided into sections.  A configuration file with sections might look like
+If the same configuration file is used by a number of programs or one program has great many options, then the file may be further divided into sections.  Sections are marked with [].  For example, a configuration files with sections global, calendar and webshop might contain
 
 ```
 [global]
@@ -38,7 +38,7 @@ mypasswd = kxkam3pari
 mydb = shop
 ```
 
-Section names should refer to installation directories.  For example, an application installed to directory calendar would see options first from the calender section and then from the global section.  Likewise, application installed to directory webshop would see options from the webshop section by default but not from the calendar section.
+Section names refer to directories.  For example, an application installed to directory calendar would see options first from the calender section and then from the global section.  Likewise, application installed to directory webshop would see options from the webshop section by default but not from the calendar section.
 
 
 ## Special Characters
@@ -48,7 +48,7 @@ If a value contains spaces or special characters, then surround the value in dou
 mypasswd = "%really hard passwrd"
 ```
 
-Special characters like \ and " within quoted strings are prefixed with backslash such that \ becomes  \ \ (two backslashes with no space in between) and " becomes \".
+Special characters like \ and " within quoted strings must be prefixed with backslash such that \ becomes  \ \ (two backslashes with no space in between) and " becomes \".
 
 
 ## Multi-line Values
@@ -69,8 +69,21 @@ EOF
 ```
 
 
+## Comments
+You can use #, // or /* */ to comment your configuration files.  For example, a commented configuration file might contain
+```
+# Enable debug output
+debug = 1  // Set this to 0 on production servers
 
-# Reading configuration file
+/*
+ * Uncomment the following lines to enable
+ * experimental feature x.
+ */
+// enablex = true
+```
+
+
+# Reading Configuration File
 
 ## Construct Config object
 In order to use options from a configuration file, first construct a Config object with the getInstance function
@@ -83,7 +96,7 @@ Tmos-config tries to locate the configuration file first from the directory cont
 
 
 ## Access Values
-With a Config object, you can access options in three ways:
+With a Config object at hand, you can access options in three ways:
 
 1. with getOption function as ``$value = $conf->getOption ('myuser', 'defaultuser');``
 2. using object notation as ``$value = $conf->myuser;``
@@ -95,8 +108,7 @@ $value = $conf->getOption ('calendar.myuser');
 ```
 
 ## Testing if a Value is Defined
-
-In order to test if an option is defined and has a non-null value, you can use the function isDefined
+To see if an option is defined and has a non-null value, use eitherisDefined function
 ```
 if ($conf->isDefined ('myuser')) {
     # Yes
@@ -104,7 +116,7 @@ if ($conf->isDefined ('myuser')) {
     # No
 }
 ```
-or isset
+or isset()
 ```
 if (isset ($conf->myuser)) {
     # Yes
@@ -114,9 +126,20 @@ if (isset ($conf->myuser)) {
 ```
 
 
-# Using tmos-config in your own programs
+# Using Tmos-config in Your Own Programs
 
 Tmos-config is fully contained in the file ``class/config.php``.  In order to use tmos-config in you own programs, copy the file to your own source tree and set up autoloader to load the class implicitly or load the class explicitly by adding the following line to beginning of each PHP file where configuration data is used
 ```
 require_once (__DIR__ . '/config.php'):
 ```
+
+
+# Alternatives to Tmos-config
+While Tmos-config is versatile, there are also other libraries and tools which solve the same problem.
+
+## Use parse_ini_file Function
+If you don't need comments or multi-line values in your configuration files, then you can use PHP's own  [parse_ini_file function](http://php.net/manual/en/function.parse-ini-file.php).  The parse_ini_file function has been around since PHP 4 and it is generally more efficient than Tmos-config.
+
+## Set Up Your include_path
+If you can set up your own ''php.ini'', then you might also add a server specific directory outside of your regular source tree to [include_path](http://php.net/manual/en/ini.core.php#ini.include-path) and store configuration data to a PHP file in this directory.  You could then summon configuration data from PHP programs simply by including the PHP file.
+
