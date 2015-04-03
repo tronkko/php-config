@@ -3,6 +3,9 @@
 # Simple sanity check to make sure that Config class can handle simple
 # configuration files consisting of nothing but option-value pairs.
 #
+# Copyright (c) 2015 Toni Ronkko
+# See the file LICENSE for copying permissions.
+#
 require_once (__DIR__ . '/../class/config.php');
 
 

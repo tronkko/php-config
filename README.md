@@ -108,7 +108,7 @@ $value = $conf->getOption ('calendar.myuser');
 ```
 
 ## Testing if a Value is Defined
-To see if an option is defined and has a non-null value, use eitherisDefined function
+To see if an option is defined and has a non-null value, use either isDefined function
 ```
 if ($conf->isDefined ('myuser')) {
     # Yes

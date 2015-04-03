@@ -1,6 +1,10 @@
 <?php
 #
-# Comments and empty lines in configuration file are skipped.
+# Test program making sure that comments and empty lines are skipped
+# properly.
+#
+# Copyright (c) 2015 Toni Ronkko
+# See the file LICENSE for copying permissions.
 #
 require_once (__DIR__ . '/../class/config.php');
 

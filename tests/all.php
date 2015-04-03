@@ -1,8 +1,12 @@
 <?php
-# Output test name
-echo "Running tests:\n\n";
+#
+# Run complete regression test suite.
+#
+# Copyright (c) 2015 Toni Ronkko
+# See the file LICENSE for copying permissions.
+#
 
-# Run tests
+# Available tests
 $tests = array(
     'sanity',
     'section',
@@ -12,6 +16,8 @@ $tests = array(
     'efficiency'
 );
 
+# Run tests
+echo "Running tests:\n\n";
 $fail = 0;
 foreach ($tests as $testname) {
 

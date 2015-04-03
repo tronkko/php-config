@@ -1,7 +1,10 @@
 <?php
 #
-# Make sure that options are retrieved from proper sections by default and
-# explicitly named sections otherwise.
+# Test program for checking that options are retrieved from proper sections
+# by default and from explicitly named sections otherwise.
+#
+# Copyright (c) 2015 Toni Ronkko
+# See the file LICENSE for copying permissions.
 #
 require_once (__DIR__ . '/../class/config.php');
 

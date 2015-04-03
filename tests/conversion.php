@@ -1,7 +1,10 @@
 <?php
 #
-# Convert numbers, strings and boolean values to their native data types but
-# leave quoted values as is
+# Test program that makes sure that numbers, strings and boolean values
+# are converted to their native data types but quoted values are left as is.
+#
+# Copyright (c) 2015 Toni Ronkko
+# See the file LICENSE for copying permissions.
 #
 require_once (__DIR__ . '/../class/config.php');
 

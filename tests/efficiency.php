@@ -1,6 +1,9 @@
 <?php
 #
-# Test reading of multi-line strings
+# Test program for measuring performance of Config class.
+#
+# Copyright (c) 2015 Toni Ronkko
+# See the file LICENSE for copying permissions.
 #
 require_once (__DIR__ . '/../class/config.php');
 
