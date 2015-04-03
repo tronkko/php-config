@@ -128,7 +128,7 @@ if (isset ($conf->myuser)) {
 
 # Using Tmos-config in Your Own Programs
 
-Tmos-config is fully contained in the file ``class/config.php``.  In order to use tmos-config in you own programs, copy the file to your own source tree and set up autoloader to load the class implicitly or load the class explicitly by adding the following line to beginning of each PHP file where configuration data is used
+Tmos-config is fully contained in the file ``class/config.php``.  In order to use tmos-config in you own programs, copy the file to your own source tree and set up autoloader to load the class implicitly.  Alternatively, load the class explicitly by adding the following line to beginning of each PHP file where configuration data is used
 ```
 require_once (__DIR__ . '/config.php'):
 ```
@@ -140,6 +140,6 @@ While Tmos-config is versatile, there are also other libraries and tools which s
 ## Use parse_ini_file Function
 If you don't need comments or multi-line values in your configuration files, then you can use PHP's own  [parse_ini_file function](http://php.net/manual/en/function.parse-ini-file.php).  The parse_ini_file function has been around since PHP 4 and it is generally more efficient than Tmos-config.
 
-## Set Up Your include_path
-If you can set up your own ''php.ini'', then you might also add a server specific directory outside of your regular source tree to [include_path](http://php.net/manual/en/ini.core.php#ini.include-path) and store configuration data to a PHP file in this directory.  You could then summon configuration data from PHP programs simply by including the PHP file.
+## Store Configuration Data in a PHP File Along include_path
+If you can set up your own ``php.ini``, then you could add a server specific directory outside of your regular source tree to [include_path](http://php.net/manual/en/ini.core.php#ini.include-path) and store configuration data to a program specific PHP file in this directory.  You could then summon configuration data from PHP code simply by including a file.
 
