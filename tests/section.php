@@ -24,8 +24,8 @@ assert_options (ASSERT_BAIL, 1);
 # Create temporary configuration file
 $fn = tempnam (sys_get_temp_dir (), 'conf');
 
-# Make sure that tmos-config is in path
-assert ('strpos (__DIR__, "/tmos-config/") !== false');
+# Make sure that php-config is in path
+assert ('strpos (__DIR__, "/php-config/") !== false');
 
 
 ### BEGIN TEST ###
@@ -36,7 +36,7 @@ file_put_contents ($fn, <<<EOF
 x:4
 second:2
 
-[tmos-config]
+[php-config]
 x: "25"
 
 [anothersection]
@@ -54,9 +54,9 @@ assert ('$conf->isDefined("x")');
 assert ('isset ($conf->x)');
 assert ('isset ($conf["x"])');
 
-# The value of option x comes from the tmos-config section by default.
+# The value of option x comes from the php-config section by default.
 # Be ware that this test requires the config.php file to reside in a
-# directory tmos-config for this test to succeed!
+# directory php-config for this test to succeed!
 assert ('$conf->getOption("x", null) == "25"');
 assert ('$conf->x == "25"');
 assert ('$conf["x"] == "25"');
