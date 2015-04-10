@@ -1,10 +1,12 @@
 <?php
 #
-# Test program that makes sure that numbers, strings and boolean values
-# are converted to their native data types but quoted values are left as is.
+# tests/conversion.php
+# Test program for data type conversions.
 #
 # Copyright (c) 2015 Toni Ronkko
-# See the file LICENSE for copying permissions.
+# This file is part of Php-config.  Php-config may be freely distributed
+# under the MIT license.  For all details and documentation, see
+# https://github.com/tronkko/php-config
 #
 require_once (__DIR__ . '/../class/config.php');
 

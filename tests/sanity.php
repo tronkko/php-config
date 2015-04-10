@@ -1,10 +1,12 @@
 <?php
 #
-# Simple sanity check to make sure that Config class can handle simple
-# configuration files consisting of nothing but option-value pairs.
+# tests/sanity.php
+# Test program for primary functions of Php-config.
 #
 # Copyright (c) 2015 Toni Ronkko
-# See the file LICENSE for copying permissions.
+# This file is part of Php-config.  Php-config may be freely distributed
+# under the MIT license.  For all details and documentation, see
+# https://github.com/tronkko/php-config
 #
 require_once (__DIR__ . '/../class/config.php');
 
@@ -20,7 +22,6 @@ assert_options (ASSERT_BAIL, 1);
 
 # Create temporary configuration file
 $fn = tempnam (sys_get_temp_dir (), 'conf');
-
 
 ### BEGIN TEST ###
 

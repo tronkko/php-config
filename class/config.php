@@ -1,31 +1,16 @@
 <?php
 #
+# Php-config 1.0
 # Library for handling configuration files in PHP
-# https://github.com/tronkko/tmos-config
 # 
 # Copyright (c) 2015 Toni Ronkko
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a
-# copy of this software and associated documentation files (the "Software"),
-# to deal in the Software without restriction, including without limitation
-# the rights to use, copy, modify, merge, publish, distribute, sublicense,
-# and/or sell copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-# DEALINGS IN THE SOFTWARE.
+# This file is part of Php-config.  Php-config may be freely distributed
+# under the MIT license.  For all details and documentation, see
+# https://github.com/tronkko/php-config
 # 
 
 /**
- * Library for handling configuration files in PHP.
+ * Configuration file reader.
  *
  * Example:
  *
@@ -35,7 +20,7 @@
  *     # Retrieve value of an option from file
  *     $user = $config->mysql_user;
  *
- * See https://github.com/tronkko/tmos-config for documentation and more
+ * See https://github.com/tronkko/php-config for documentation and more
  * examples.
  */
 class Config implements ArrayAccess {

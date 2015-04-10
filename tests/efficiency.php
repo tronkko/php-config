@@ -1,9 +1,12 @@
 <?php
 #
+# tests/efficiency.php
 # Test program for measuring performance of Config class.
 #
 # Copyright (c) 2015 Toni Ronkko
-# See the file LICENSE for copying permissions.
+# This file is part of Php-config.  Php-config may be freely distributed
+# under the MIT license.  For all details and documentation, see
+# https://github.com/tronkko/php-config
 #
 require_once (__DIR__ . '/../class/config.php');
 

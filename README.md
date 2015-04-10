@@ -1,10 +1,10 @@
-# tmos-config
+# php-config 1.0
 Library for handling configuration files in PHP.
 
 # Rationale
 Before PHP code is run on servers, the code often has to be configured just for that server's enviroment.  For example, production servers may have distinct user names and passwords for accessing databases while development servers may have dummy email addresses and urls to prevent development code from interacting with the world or to facilitate debugging.
 
-Tmos-config is a library that allows you to store server specific data in a configuration file that is kept outside of version control.  Having configuration data outside source code allows you to update or re-install your program on a number of pre-configured servers without modifying code.
+Php-config is a library that allows you to store server specific data in a configuration file that is kept outside of version control.  Having configuration data outside source code allows you to update or re-install your program on a number of pre-configured servers without modifying code.
 
 
 # Anatomy of a Configuration File
@@ -92,7 +92,7 @@ $conf = Config::getInstance ('server.conf')
 ```
 where ''server.conf'' is the name of the configuration file.  
 
-Tmos-config tries to locate the configuration file first from the directory containing config.php file, then from its parent directory and so on up until the disk root.  Ideally, you should place the configuration file just above the web root so that the file cannot be read from web accidentially and you don't need to re-create the file if you decide to wipe out the program directory before installing a new version.
+Php-config tries to locate the configuration file first from the directory containing config.php file, then from its parent directory and so on up until the disk root.  Ideally, you should place the configuration file just above the web root so that the file cannot be read from web accidentially and you don't need to re-create the file if you decide to wipe out the program directory before installing a new version.
 
 
 ## Access Values
@@ -126,19 +126,19 @@ if (isset ($conf->myuser)) {
 ```
 
 
-# Using Tmos-config in Your Own Programs
+# Using Php-config in Your Own Programs
 
-Tmos-config is fully contained in the file ``class/config.php``.  In order to use tmos-config in you own programs, copy the file to your own source tree and set up autoloader to load the class implicitly.  Alternatively, load the class explicitly by adding the following line to beginning of each PHP file where configuration data is used
+Php-config is fully contained in the file ``class/config.php``.  In order to use Php-config in you own programs, copy the file to your own source tree and set up autoloader to load the class implicitly.  Alternatively, load the class explicitly by adding the following line to beginning of each PHP file where configuration data is used
 ```
 require_once (__DIR__ . '/config.php'):
 ```
 
 
-# Alternatives to Tmos-config
-While Tmos-config is versatile, there are also other libraries and tools which solve the same problem.
+# Alternatives to Php-config
+While Php-config is versatile, there are also other libraries and tools which solve the same problem.
 
 ## Use parse_ini_file Function
-If you don't need comments or multi-line values in your configuration files, then you can use PHP's own  [parse_ini_file function](http://php.net/manual/en/function.parse-ini-file.php).  The parse_ini_file function has been around since PHP 4 and it is generally more efficient than Tmos-config.
+If you don't need comments or multi-line values in your configuration files, then you can use PHP's own  [parse_ini_file function](http://php.net/manual/en/function.parse-ini-file.php).  The parse_ini_file function has been around since PHP 4 and it is generally more efficient than Php-config.
 
 ## Store Configuration Data in a PHP File Along include_path
 If you can set up your own ``php.ini``, then you could add a server specific directory outside of your regular source tree to [include_path](http://php.net/manual/en/ini.core.php#ini.include-path) and store configuration data to a program specific PHP file in this directory.  You could then summon configuration data from PHP code simply by including a file.

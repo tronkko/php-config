@@ -1,10 +1,12 @@
 <?php
 #
-# Test program for checking that options are retrieved from proper sections
-# by default and from explicitly named sections otherwise.
+# tests/section.php
+# Test program for section handling.
 #
 # Copyright (c) 2015 Toni Ronkko
-# See the file LICENSE for copying permissions.
+# This file is part of Php-config.  Php-config may be freely distributed
+# under the MIT license.  For all details and documentation, see
+# https://github.com/tronkko/php-config
 #
 require_once (__DIR__ . '/../class/config.php');
 
