@@ -89,9 +89,7 @@ Php-config is fully contained in the file ``class/config.php``.  In order to use
 require_once (__DIR__ . '/config.php'):
 ```
 
-## Read a Configuration File
-
-### Construct Config object
+## Construct Config object
 In order to use options from a configuration file, first construct a Config object with the getInstance function
 ```
 $conf = Config::getInstance ('server.conf')
@@ -101,7 +99,7 @@ where ''server.conf'' is the name of the configuration file.
 Php-config tries to locate the configuration file first from the directory containing config.php file, then from its parent directory and so on up until the disk root.  Ideally, you should place the configuration file just above the web root so that the file cannot be read from web accidentially and you don't need to re-create the file if you decide to wipe out the program directory before installing a new version.
 
 
-### Access Values
+## Access Values
 With a Config object at hand, you can access options in three ways:
 
 1. with getOption function as ``$value = $conf->getOption ('myuser', 'defaultuser');``
@@ -113,7 +111,7 @@ By default, options are retrieved from the program's own section and then from t
 $value = $conf->getOption ('calendar.myuser');
 ```
 
-### Test if a Value is Defined
+## Test if a Value is Defined
 To see if an option is defined and has a non-null value, use either isDefined function
 ```
 if ($conf->isDefined ('myuser')) {
