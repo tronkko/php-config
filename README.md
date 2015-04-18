@@ -1,10 +1,9 @@
 # php-config 1.0
 Library for handling configuration files in PHP.
 
-# Rationale
-Before PHP code is run on servers, the code often has to be configured just for that server's enviroment.  For example, production servers may have distinct user names and passwords for accessing databases while development servers may have dummy email addresses and urls to prevent development code from interacting with the world or to facilitate debugging.
+Before PHP code is run on servers, the code often has to be configured just for that server's enviroment.  For example, production servers may have distinct user names and passwords for accessing databases while development servers may have dummy email addresses and urls to prevent development code from interacting with the world.
 
-Php-config is a library that allows you to store server specific data in a configuration file that is kept outside of version control.  Having configuration data outside source code allows you to update or re-install your program on a number of pre-configured servers without modifying code.
+Php-config is a library that allows you to store server specific data in a configuration file that is kept outside of version control.  Having configuration data outside source code allows each developer to control their own environment easily, and update or re-install programs on a number of pre-configured servers without modifying code.
 
 
 # Anatomy of a Configuration File
@@ -82,10 +81,17 @@ debug = 1  // Set this to 0 on production servers
 // enablex = true
 ```
 
+# Using Php-config in Your Own Programs
 
-# Reading Configuration File
+## Include Php-Config
+Php-config is fully contained in the file ``class/config.php``.  In order to use Php-config in you own programs, copy the file to your own source tree and set up autoloader to load the class implicitly.  Alternatively, load the class explicitly by adding the following line to beginning of each PHP file where configuration data is used
+```
+require_once (__DIR__ . '/config.php'):
+```
 
-## Construct Config object
+## Read a Configuration File
+
+### Construct Config object
 In order to use options from a configuration file, first construct a Config object with the getInstance function
 ```
 $conf = Config::getInstance ('server.conf')
@@ -95,7 +101,7 @@ where ''server.conf'' is the name of the configuration file.
 Php-config tries to locate the configuration file first from the directory containing config.php file, then from its parent directory and so on up until the disk root.  Ideally, you should place the configuration file just above the web root so that the file cannot be read from web accidentially and you don't need to re-create the file if you decide to wipe out the program directory before installing a new version.
 
 
-## Access Values
+### Access Values
 With a Config object at hand, you can access options in three ways:
 
 1. with getOption function as ``$value = $conf->getOption ('myuser', 'defaultuser');``
@@ -107,7 +113,7 @@ By default, options are retrieved from the program's own section and then from t
 $value = $conf->getOption ('calendar.myuser');
 ```
 
-## Testing if a Value is Defined
+### Test if a Value is Defined
 To see if an option is defined and has a non-null value, use either isDefined function
 ```
 if ($conf->isDefined ('myuser')) {
@@ -126,20 +132,14 @@ if (isset ($conf->myuser)) {
 ```
 
 
-# Using Php-config in Your Own Programs
-
-Php-config is fully contained in the file ``class/config.php``.  In order to use Php-config in you own programs, copy the file to your own source tree and set up autoloader to load the class implicitly.  Alternatively, load the class explicitly by adding the following line to beginning of each PHP file where configuration data is used
-```
-require_once (__DIR__ . '/config.php'):
-```
 
 
 # Alternatives to Php-config
-While Php-config is versatile, there are also other libraries and tools which solve the same problem.
+While Php-config is versatile and useful, other libraries and tools can also solve the same problem.
 
 ## Use parse_ini_file Function
 If you don't need comments or multi-line values in your configuration files, then you can use PHP's own  [parse_ini_file function](http://php.net/manual/en/function.parse-ini-file.php).  The parse_ini_file function has been around since PHP 4 and it is generally more efficient than Php-config.
 
 ## Store Configuration Data in a PHP File Along include_path
-If you can set up your own ``php.ini``, then you could add a server specific directory outside of your regular source tree to [include_path](http://php.net/manual/en/ini.core.php#ini.include-path) and store configuration data to a program specific PHP file in this directory.  You could then summon configuration data from PHP code simply by including a file.
+If you can set up your own ``php.ini``, then you could add a server specific directory outside of your regular source tree to [include_path](http://php.net/manual/en/ini.core.php#ini.include-path) and store configuration data to a program specific PHP file in that directory.  You could then summon configuration data from PHP code simply by including a file.
 
