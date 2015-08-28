@@ -19,6 +19,9 @@ $tests = array(
     'efficiency'
 );
 
+# For displaying results correctly in a browser
+header("Content-Type:text/plain");
+
 # Run tests
 echo "Running tests:\n\n";
 $fail = 0;
